@@ -1,9 +1,13 @@
 FROM debian:slim
 
-RUN apt update
+RUN apt update -y && \
+    apt install apache2 -y && \
+    apt clean
 
 EXPOSE 9000
 
-VOLUME /data
+COPY index.html /var/www/html 
 
-CMD [ "/bin/bash","-c" ,"while true; do echo $(date) >> /data/file1.txt; sleep 2; done" ]
+VOLUME /var/www/html 
+
+CMD [ "apachectl","-D" ,"FOREGROUND"]
