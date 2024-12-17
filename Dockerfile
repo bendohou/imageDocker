@@ -4,7 +4,7 @@ RUN apt update -y && \
     apt install apache2 -y && \
     apt clean
 
-EXPOSE 9000
+EXPOSE 80
 
 COPY index.html /var/www/html 
 
