@@ -8,4 +8,6 @@ EXPOSE 9000
 
 COPY index.html /var/www/html 
 
+VOLUME  /var/www/html
+
 CMD [ "apachectl","-D", "FOREGROUND" ]
