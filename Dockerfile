@@ -1,4 +1,4 @@
-FROM debian:slim
+FROM debian:latest
 
 RUN apt update
 
