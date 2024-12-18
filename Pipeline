@@ -17,6 +17,7 @@ agent any
         }
         
         stage('Create volume') {
+
                     steps {
                         script {
                             sh 'docker volume create myvol'
