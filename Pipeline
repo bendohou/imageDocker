@@ -1,0 +1,54 @@
+agent any
+
+    stages {
+        stage('Pull') {
+            steps {
+                script {
+                    git branch: 'main', url: 'https://github.com/bendohou/imageDocker.git'
+                }
+            }
+        }
+        stage('Build Image') {
+            steps {
+                script {
+                    sh 'docker build -t appli .'
+                }
+            }
+        }
+        
+        stage('Create volume') {
+                    steps {
+                        script {
+                            sh 'docker volume create myvol'
+                        }
+                    }
+        }
+        
+         stage('remove container') {
+                    steps {
+                        script {
+                            sh 'docker kill appli3'
+                            sh 'docker rm appli3'
+                        }
+                    }
+           }
+        
+        stage('run container') {
+            steps {
+                script {
+                    sh 'docker run --name appli3 -d -p 9001:80 appli'
+                }
+            }
+        }
+        
+        stage('show results') {
+            steps {
+                script {
+                    sh 'docker ps'
+                }
+            }
+        }
+    }
+}
+
+
