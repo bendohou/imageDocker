@@ -1,0 +1,8 @@
+services:
+  appli3:
+    container_name: appli3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9001:80
