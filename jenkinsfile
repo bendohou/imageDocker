@@ -8,6 +8,16 @@ agent any
                 }
             }
         }
+
+        stage('remove container') {
+                    steps {
+                        script {
+                            sh 'docker kill appli3'
+                            sh 'docker rm appli3'
+                        }
+                    }
+           }
+
         stage('run service') {
             steps {
                 script {
